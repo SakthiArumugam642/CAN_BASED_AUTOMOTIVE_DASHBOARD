@@ -1,11 +1,3 @@
-Here's a full README for this CAN-based automotive dashboard project:
-  ::view-transition-group(*),
-  ::view-transition-old(*),
-  ::view-transition-new(*) {
-    animation-duration: 0.25s;
-    animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
-  }
-VvisualizeVvisualize show_widget
 CAN-Based Automotive Dashboard
 A multi-ECU automotive dashboard system built on PIC18F microcontrollers, communicating over a CAN bus. Three ECUs work together — two sensor nodes send data, and one display node renders everything on an LCD with indicator LEDs.
 
@@ -42,17 +34,10 @@ Indicator stateLED behavior<-- (left)RB0 blinks, RB7 off--> (right)RB7 blinks, R
 RPM Calculation (ECU1)
 The ADC reads 10 samples from CH4, averages them, then scales to a 0–6000 RPM range:
 crpm = (adc_avg / 10.23) * 60;
-```
-
-This maps the 10-bit ADC range (0–1023) to 0–6000 RPM.
-
----
 
 ## Project Structure
-```
 project/
 ├── ECU1/main.c     — RPM + indicator transmitter
 ├── ECU2/main.c     — Speed + gear transmitter
 └── ECU3/main.c     — Dashboard receiver + display
-All three files share the same peripheral drivers (ADC, LCD, CAN, keypad) with ECU-specific sensor and display logic in main().
-<img width="1440" height="678" alt="image" src="https://github.com/user-attachments/assets/98553c26-d2fa-40d8-bb98-072e0e512fc5" />
+All three files share the same peripheral drivers (ADC, LCD, CAN, keypad) with ECU-specific sensor and display logic in main()
